@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOW Project Page</title>
+  <meta
+    name="description"
+    content="Project page for GLOW: Global Illumination-Aware Inverse Rendering of Indoor Scenes Captured with Dynamic Co-Located Light & Camera."
+  >
+  <style>
+    :root {
+      --bg: #f6f3ea;
+      --panel: rgba(255, 252, 244, 0.88);
+      --text: #1f1d1a;
+      --muted: #5f584f;
+      --line: rgba(31, 29, 26, 0.12);
+      --accent: #b5532d;
+      --accent-strong: #8c3c1f;
+      --shadow: 0 24px 60px rgba(63, 42, 24, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(181, 83, 45, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(171, 145, 92, 0.2), transparent 24%),
+        linear-gradient(180deg, #f5f1e8 0%, #f8f7f2 48%, #efe8dd 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 56px 28px 28px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid rgba(181, 83, 45, 0.24);
+      border-radius: 999px;
+      color: var(--accent-strong);
+      background: rgba(181, 83, 45, 0.08);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      max-width: 980px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      max-width: 860px;
+      margin: 0;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .authors {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .affiliations {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.98rem;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(181, 83, 45, 0.36);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #fff9f4;
+      border-color: var(--accent);
+    }
+
+    .button.primary:hover {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+    }
+
+    .button.placeholder::after {
+      content: "coming soon";
+      margin-left: 8px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(31, 29, 26, 0.08);
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: lowercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card.copy {
+      padding: 26px 24px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .media {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #ebe4d7;
+    }
+
+    .caption {
+      padding: 16px 18px 18px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 44px 20px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero,
+      .card {
+        animation: rise 700ms ease both;
+      }
+
+      .card:nth-of-type(2) {
+        animation-delay: 120ms;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Project Page</div>
+      <h1>GLOW</h1>
+      <p class="subtitle">
+        Global Illumination-Aware Inverse Rendering of Indoor Scenes Captured with Dynamic
+        Co-Located Light &amp; Camera
+      </p>
+      <div class="authors">
+        Jiaye Wu, Saeed Hadadan, Geng Lin, Peihan Tu, Matthias Zwicker, David Jacobs, Roni Sengupta
+      </div>
+      <div class="affiliations">
+        University of Maryland, College Park · University of North Carolina at Chapel Hill
+      </div>
+      <div class="actions">
+        <a class="button primary" href="#">Paper</a>
+        <a class="button placeholder" href="#">Code</a>
+        <a class="button placeholder" href="#">Dataset</a>
+        <a class="button" href="#">BibTeX</a>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Project overview">
+      <article class="card">
+        <img
+          class="media"
+          src="teaser.png"
+          alt="Teaser for GLOW showing inverse rendering results, geometry, and material properties."
+        >
+        <div class="caption">
+          We reconstruct indoor scenes from images captured with a co-located light and camera,
+          recovering geometry and material properties while accounting for challenging global illumination.
+        </div>
+      </article>
+
+      <article class="card copy">
+        <h2>Abstract</h2>
+        <p>
+          Inverse rendering of indoor scenes remains challenging due to the ambiguity between reflectance
+          and lighting, exacerbated by inter-reflections among multiple objects. While natural
+          illumination-based methods struggle to resolve this ambiguity, co-located light-camera setups
+          offer better disentanglement as lighting can be easily calibrated via Structure-from-Motion.
+          However, such setups introduce additional complexities like strong inter-reflections, dynamic
+          shadows, near-field lighting, and moving specular highlights, which existing approaches fail
+          to handle. We present GLOW, a Global Illumination-aware Inverse Rendering framework designed
+          to address these challenges.
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
