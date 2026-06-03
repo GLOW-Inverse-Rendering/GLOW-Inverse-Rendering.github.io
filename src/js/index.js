@@ -1,6 +1,6 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-// More Works Dropdown Functionality
+// Related Works Dropdown Functionality
 function toggleMoreWorks() {
     const dropdown = document.getElementById('moreWorksDropdown');
     const button = document.querySelector('.more-works-btn');

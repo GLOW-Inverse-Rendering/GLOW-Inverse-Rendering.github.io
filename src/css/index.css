@@ -216,32 +216,6 @@ body {
   box-shadow: var(--shadow-xl);
 }
 
-/* Modern Video and Carousel Styling */
-.publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-    border-radius: var(--border-radius-lg) !important;
-    box-shadow: var(--shadow-xl);
-    transition: var(--transition);
-}
-
-.publication-video:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
-}
-
-.publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--border-radius-lg);
-}
-
 .publication-body img {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
@@ -458,7 +432,7 @@ code {
 }
 
 
-/* More Works Dropdown */
+/* Related Works Dropdown */
 .more-works-container {
   position: fixed;
   top: 2rem;
@@ -753,5 +727,3 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
-
