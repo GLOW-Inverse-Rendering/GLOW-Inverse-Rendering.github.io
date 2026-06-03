@@ -236,7 +236,13 @@
               However, such setups introduce additional complexities like strong inter-reflections, dynamic
               shadows, near-field lighting, and moving specular highlights, which existing approaches fail
               to handle. We present GLOW, a Global Illumination-aware Inverse Rendering framework designed
-              to address these challenges.
+              to address these challenges. GLOW integrates a neural implicit surface representation with a
+              neural radiance cache to approximate global illumination, jointly optimizing geometry and
+              reflectance through carefully designed regularization and initialization. We then introduce a
+              dynamic radiance cache that adapts to sharp lighting discontinuities from near-field motion,
+              and a surface-angle-weighted radiometric loss to suppress specular artifacts common in
+              flashlight captures. Experiments show that GLOW substantially outperforms prior methods in
+              material reflectance estimation under both natural and co-located illumination.
             </p>
           </div>
         </div>
