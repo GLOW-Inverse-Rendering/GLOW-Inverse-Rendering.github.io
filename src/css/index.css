@@ -680,17 +680,12 @@ body {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: 3px;
   background: var(--gradient-accent);
   border-radius: 2px;
-}
-
-.title.is-3.has-text-centered::after,
-.has-text-centered .title.is-3::after {
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 /* Content Improvements */
