@@ -150,22 +150,20 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">GLOW</h1>
-            <h2 class="subtitle is-4">
-              Global Illumination-Aware Inverse Rendering of Indoor Scenes Captured with Dynamic Co-Located Light &amp; Camera
-            </h2>
+            <h1 class="title is-1 publication-title">GLOW: Global Illumination-Aware Inverse Rendering of Indoor Scenes Captured with Dynamic Co-Located Light &amp; Camera</h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Jiaye Wu,</span>
-              <span class="author-block">Saeed Hadadan,</span>
-              <span class="author-block">Geng Lin,</span>
-              <span class="author-block">Peihan Tu,</span>
-              <span class="author-block">Matthias Zwicker,</span>
-              <span class="author-block">David Jacobs,</span>
-              <span class="author-block">Roni Sengupta</span>
+              <span class="author-block">Jiaye Wu<sup>1</sup>,</span>
+              <span class="author-block">Saeed Hadadan<sup>1</sup>,</span>
+              <span class="author-block">Geng Lin<sup>1</sup>,</span>
+              <span class="author-block">Peihan Tu<sup>1</sup>,</span>
+              <span class="author-block">Matthias Zwicker<sup>1</sup>,</span>
+              <span class="author-block">David Jacobs<sup>1</sup>,</span>
+              <span class="author-block">Roni Sengupta<sup>2</sup></span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">University of Maryland, College Park · University of North Carolina at Chapel Hill</span>
+              <span class="author-block"><sup>1</sup>University of Maryland, College Park</span>
+              <span class="author-block"><sup>2</sup>University of North Carolina, Chapel Hill</span>
               <br>
               <span class="author-block">CVPRF 2026</span>
             </div>
@@ -189,7 +187,7 @@
                 <span class="link-block">
                   <a href="#" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
+                    <span>Code (Coming Soon)</span>
                   </a>
                 </span>
 
@@ -251,59 +249,397 @@
   </section>
   <!-- End paper abstract -->
 
-  <!-- Image carousel -->
-  <section class="hero is-small">
+  <!-- Qualitative results -->
+  <section class="hero is-small qualitative-section">
     <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item">
-            <img src="static/images/carousel1.jpg" alt="Placeholder research result visualization" loading="lazy">
-            <h2 class="subtitle has-text-centered">Placeholder for GLOW qualitative results.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/carousel2.jpg" alt="Placeholder research result visualization" loading="lazy">
-            <h2 class="subtitle has-text-centered">Placeholder for recovered geometry and material visualizations.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/carousel3.jpg" alt="Placeholder research result visualization" loading="lazy">
-            <h2 class="subtitle has-text-centered">Placeholder for comparisons or ablations.</h2>
-          </div>
-          <div class="item">
-            <img src="static/images/carousel4.jpg" alt="Placeholder research result visualization" loading="lazy">
-            <h2 class="subtitle has-text-centered">Placeholder for additional indoor scene results.</h2>
-          </div>
+      <div class="container is-max-widescreen">
+        <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+        <div class="result-controls result-primary-controls" role="tablist" aria-label="Result category">
+          <button class="result-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="results-synthetic" data-result-category-tab="synthetic">Synthetic Comparison</button>
+          <button class="result-tab" type="button" role="tab" aria-selected="false" aria-controls="results-real" data-result-category-tab="real">Real-Scene Comparison</button>
+          <button class="result-tab" type="button" role="tab" aria-selected="false" aria-controls="results-ablation" data-result-category-tab="ablation">Radiance Cache Ablation</button>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- End image carousel -->
+        <div class="result-descriptions" aria-live="polite">
+          <p class="result-note is-active has-text-centered" data-result-description="synthetic">
+            Comparison of our technique against natural-illumination and co-located light and camera baselines on synthetic data.
+          </p>
+          <p class="result-note has-text-centered" data-result-description="real" hidden>
+            Comparison of our technique against co-located light and camera baselines on real captures.
+          </p>
+          <p class="result-note has-text-centered" data-result-description="ablation" hidden>
+            The ablation isolates the radiance-cache design on the kitchen scene using ground-truth mesh geometry, with reflectance error and runtime below.
+          </p>
+        </div>
+        <div class="result-controls result-metric-controls" role="tablist" aria-label="Reflectance result type">
+          <button class="result-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="synthetic-albedo" data-result-metric-tab="albedo">Albedo</button>
+          <button class="result-tab" type="button" role="tab" aria-selected="false" aria-controls="synthetic-roughness" data-result-metric-tab="roughness">Roughness</button>
+        </div>
 
-  <!-- Video carousel -->
+        <div class="result-category-panel is-active" id="results-synthetic" role="tabpanel" data-result-category-panel="synthetic">
+          <div class="result-panel is-active" id="synthetic-albedo" role="tabpanel" data-result-metric-panel="synthetic:albedo">
+            <h3 class="result-subtitle">Synthetic Scenes</h3>
+            <article class="result-scene">
+              <h3>Bedroom</h3>
+              <div class="result-grid">
+                <div class="result-group result-group-natural">Natural illumination</div>
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/synthetic/bedroom/input-natural.png" alt="Bedroom synthetic input rendering under natural illumination" loading="lazy"></figure>
+                <figure><span>NeRO</span><img src="static/images/results/synthetic/bedroom/albedo-nero.png" alt="Bedroom albedo estimated by NeRO" loading="lazy"></figure>
+                <figure><span>IRGS</span><img src="static/images/results/synthetic/bedroom/albedo-irgs.png" alt="Bedroom albedo estimated by IRGS" loading="lazy"></figure>
+                <figure><span>Input</span><img src="static/images/results/synthetic/bedroom/input-colocated.png" alt="Bedroom synthetic input rendering under co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/synthetic/bedroom/albedo-iron.png" alt="Bedroom albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/synthetic/bedroom/albedo-wildlight.png" alt="Bedroom albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/synthetic/bedroom/albedo-glow.png" alt="Bedroom albedo estimated by Ours" loading="lazy"></figure>
+                <figure><span>GT</span><img src="static/images/results/synthetic/bedroom/albedo-gt.png" alt="Bedroom ground-truth albedo" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Shelf</h3>
+              <div class="result-grid">
+                <div class="result-group result-group-natural">Natural illumination</div>
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/synthetic/shelf/input-natural.png" alt="Shelf synthetic input rendering under natural illumination" loading="lazy"></figure>
+                <figure><span>NeRO</span><img src="static/images/results/synthetic/shelf/albedo-nero.png" alt="Shelf albedo estimated by NeRO" loading="lazy"></figure>
+                <figure><span>IRGS</span><img src="static/images/results/synthetic/shelf/albedo-irgs.png" alt="Shelf albedo estimated by IRGS" loading="lazy"></figure>
+                <figure><span>Input</span><img src="static/images/results/synthetic/shelf/input-colocated.png" alt="Shelf synthetic input rendering under co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/synthetic/shelf/albedo-iron.png" alt="Shelf albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/synthetic/shelf/albedo-wildlight.png" alt="Shelf albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/synthetic/shelf/albedo-glow.png" alt="Shelf albedo estimated by Ours" loading="lazy"></figure>
+                <figure><span>GT</span><img src="static/images/results/synthetic/shelf/albedo-gt.png" alt="Shelf ground-truth albedo" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Kitchen</h3>
+              <div class="result-grid">
+                <div class="result-group result-group-natural">Natural illumination</div>
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/synthetic/kitchen/input-natural.png" alt="Kitchen synthetic input rendering under natural illumination" loading="lazy"></figure>
+                <figure><span>NeRO</span><img src="static/images/results/synthetic/kitchen/albedo-nero.png" alt="Kitchen albedo estimated by NeRO" loading="lazy"></figure>
+                <figure><span>IRGS</span><img src="static/images/results/synthetic/kitchen/albedo-irgs.png" alt="Kitchen albedo estimated by IRGS" loading="lazy"></figure>
+                <figure><span>Input</span><img src="static/images/results/synthetic/kitchen/input-colocated.png" alt="Kitchen synthetic input rendering under co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/synthetic/kitchen/albedo-iron.png" alt="Kitchen albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/synthetic/kitchen/albedo-wildlight.png" alt="Kitchen albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/synthetic/kitchen/albedo-glow.png" alt="Kitchen albedo estimated by Ours" loading="lazy"></figure>
+                <figure><span>GT</span><img src="static/images/results/synthetic/kitchen/albedo-gt.png" alt="Kitchen ground-truth albedo" loading="lazy"></figure>
+              </div>
+            </article>
+          </div>
+
+          <div class="result-panel" id="synthetic-roughness" role="tabpanel" data-result-metric-panel="synthetic:roughness" hidden>
+            <h3 class="result-subtitle">Synthetic Scenes</h3>
+            <article class="result-scene">
+              <h3>Bedroom</h3>
+              <div class="result-grid">
+                <div class="result-group result-group-natural">Natural illumination</div>
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/synthetic/bedroom/input-natural.png" alt="Bedroom synthetic input rendering under natural illumination" loading="lazy"></figure>
+                <figure><span>NeRO</span><img src="static/images/results/synthetic/bedroom/roughness-nero.png" alt="Bedroom roughness estimated by NeRO" loading="lazy"></figure>
+                <figure><span>IRGS</span><img src="static/images/results/synthetic/bedroom/roughness-irgs.png" alt="Bedroom roughness estimated by IRGS" loading="lazy"></figure>
+                <figure><span>Input</span><img src="static/images/results/synthetic/bedroom/input-colocated.png" alt="Bedroom synthetic input rendering under co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/synthetic/bedroom/roughness-iron.png" alt="Bedroom roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/synthetic/bedroom/roughness-wildlight.png" alt="Bedroom roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/synthetic/bedroom/roughness-glow.png" alt="Bedroom roughness estimated by Ours" loading="lazy"></figure>
+                <figure><span>GT</span><img src="static/images/results/synthetic/bedroom/roughness-gt.png" alt="Bedroom ground-truth roughness" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Shelf</h3>
+              <div class="result-grid">
+                <div class="result-group result-group-natural">Natural illumination</div>
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/synthetic/shelf/input-natural.png" alt="Shelf synthetic input rendering under natural illumination" loading="lazy"></figure>
+                <figure><span>NeRO</span><img src="static/images/results/synthetic/shelf/roughness-nero.png" alt="Shelf roughness estimated by NeRO" loading="lazy"></figure>
+                <figure><span>IRGS</span><img src="static/images/results/synthetic/shelf/roughness-irgs.png" alt="Shelf roughness estimated by IRGS" loading="lazy"></figure>
+                <figure><span>Input</span><img src="static/images/results/synthetic/shelf/input-colocated.png" alt="Shelf synthetic input rendering under co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/synthetic/shelf/roughness-iron.png" alt="Shelf roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/synthetic/shelf/roughness-wildlight.png" alt="Shelf roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/synthetic/shelf/roughness-glow.png" alt="Shelf roughness estimated by Ours" loading="lazy"></figure>
+                <figure><span>GT</span><img src="static/images/results/synthetic/shelf/roughness-gt.png" alt="Shelf ground-truth roughness" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Kitchen</h3>
+              <div class="result-grid">
+                <div class="result-group result-group-natural">Natural illumination</div>
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/synthetic/kitchen/input-natural.png" alt="Kitchen synthetic input rendering under natural illumination" loading="lazy"></figure>
+                <figure><span>NeRO</span><img src="static/images/results/synthetic/kitchen/roughness-nero.png" alt="Kitchen roughness estimated by NeRO" loading="lazy"></figure>
+                <figure><span>IRGS</span><img src="static/images/results/synthetic/kitchen/roughness-irgs.png" alt="Kitchen roughness estimated by IRGS" loading="lazy"></figure>
+                <figure><span>Input</span><img src="static/images/results/synthetic/kitchen/input-colocated.png" alt="Kitchen synthetic input rendering under co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/synthetic/kitchen/roughness-iron.png" alt="Kitchen roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/synthetic/kitchen/roughness-wildlight.png" alt="Kitchen roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/synthetic/kitchen/roughness-glow.png" alt="Kitchen roughness estimated by Ours" loading="lazy"></figure>
+                <figure><span>GT</span><img src="static/images/results/synthetic/kitchen/roughness-gt.png" alt="Kitchen ground-truth roughness" loading="lazy"></figure>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="result-category-panel" id="results-real" role="tabpanel" data-result-category-panel="real" hidden>
+          <div class="result-panel is-active" id="real-albedo" role="tabpanel" data-result-metric-panel="real:albedo">
+            <h3 class="result-subtitle">Real Scenes</h3>
+            <article class="result-scene">
+              <h3>Shoe Rack</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/shoe-rack/input.png" alt="Shoe rack real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/shoe-rack/albedo-iron.png" alt="Shoe rack albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/shoe-rack/albedo-wildlight.png" alt="Shoe rack albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/shoe-rack/albedo-glow.png" alt="Shoe rack albedo estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Table</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/table/input.png" alt="Table real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/table/albedo-iron.png" alt="Table albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/table/albedo-wildlight.png" alt="Table albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/table/albedo-glow.png" alt="Table albedo estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Window Sill</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/window-sill/input.png" alt="Window sill real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/window-sill/albedo-iron.png" alt="Window sill albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/window-sill/albedo-wildlight.png" alt="Window sill albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/window-sill/albedo-glow.png" alt="Window sill albedo estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Coffee Table</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/coffee-table/input.png" alt="Coffee table real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/coffee-table/albedo-iron.png" alt="Coffee table albedo estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/coffee-table/albedo-wildlight.png" alt="Coffee table albedo estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/coffee-table/albedo-glow.png" alt="Coffee table albedo estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+          </div>
+
+          <div class="result-panel" id="real-roughness" role="tabpanel" data-result-metric-panel="real:roughness" hidden>
+            <h3 class="result-subtitle">Real Scenes</h3>
+            <article class="result-scene">
+              <h3>Shoe Rack</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/shoe-rack/input.png" alt="Shoe rack real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/shoe-rack/roughness-iron.png" alt="Shoe rack roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/shoe-rack/roughness-wildlight.png" alt="Shoe rack roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/shoe-rack/roughness-glow.png" alt="Shoe rack roughness estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Table</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/table/input.png" alt="Table real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/table/roughness-iron.png" alt="Table roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/table/roughness-wildlight.png" alt="Table roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/table/roughness-glow.png" alt="Table roughness estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Window Sill</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/window-sill/input.png" alt="Window sill real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/window-sill/roughness-iron.png" alt="Window sill roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/window-sill/roughness-wildlight.png" alt="Window sill roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/window-sill/roughness-glow.png" alt="Window sill roughness estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+            <article class="result-scene">
+              <h3>Coffee Table</h3>
+              <div class="result-grid result-grid-real">
+                <div class="result-group result-group-colocated">Co-located light &amp; camera</div>
+                <figure><span>Input</span><img src="static/images/results/real/coffee-table/input.png" alt="Coffee table real input image captured with co-located light and camera" loading="lazy"></figure>
+                <figure><span>IRON</span><img src="static/images/results/real/coffee-table/roughness-iron.png" alt="Coffee table roughness estimated by IRON" loading="lazy"></figure>
+                <figure><span>WildLight</span><img src="static/images/results/real/coffee-table/roughness-wildlight.png" alt="Coffee table roughness estimated by WildLight" loading="lazy"></figure>
+                <figure><span>Ours</span><img src="static/images/results/real/coffee-table/roughness-glow.png" alt="Coffee table roughness estimated by Ours" loading="lazy"></figure>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="result-category-panel" id="results-ablation" role="tabpanel" data-result-category-panel="ablation" hidden>
+          <h3 class="result-subtitle">Radiance Cache Ablation</h3>
+          <div class="ablation-grid">
+            <div class="ablation-corner" aria-hidden="true"></div>
+            <div class="ablation-header">GT</div>
+            <div class="ablation-header">Ours</div>
+            <div class="ablation-header">Path</div>
+            <div class="ablation-header">Direct</div>
+            <div class="ablation-header">Naive Cache</div>
+            <div class="ablation-row-label">Image</div>
+            <figure><img src="static/images/results/ablation/kitchen/image/gt.png" alt="Kitchen rendered image with ground-truth material" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/image/ours.png" alt="Kitchen rendered image from Ours" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/image/path.png" alt="Kitchen rendered image from path tracing" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/image/direct.png" alt="Kitchen rendered image from direct illumination" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/image/naive-cache.png" alt="Kitchen rendered image from naive radiance cache" loading="lazy"></figure>
+            <div class="ablation-row-label">Albedo</div>
+            <figure><img src="static/images/results/ablation/kitchen/albedo/gt.png" alt="Kitchen ground-truth albedo" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/albedo/ours.png" alt="Kitchen albedo from Ours" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/albedo/path.png" alt="Kitchen albedo from path tracing" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/albedo/direct.png" alt="Kitchen albedo from direct illumination" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/albedo/naive-cache.png" alt="Kitchen albedo from naive radiance cache" loading="lazy"></figure>
+            <div class="ablation-row-label">Roughness</div>
+            <figure><img src="static/images/results/ablation/kitchen/roughness/gt.png" alt="Kitchen ground-truth roughness" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/roughness/ours.png" alt="Kitchen roughness from Ours" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/roughness/path.png" alt="Kitchen roughness from path tracing" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/roughness/direct.png" alt="Kitchen roughness from direct illumination" loading="lazy"></figure>
+            <figure><img src="static/images/results/ablation/kitchen/roughness/naive-cache.png" alt="Kitchen roughness from naive radiance cache" loading="lazy"></figure>
+          </div>
+
+          <p class="ablation-table-title">Quantitative results on ablation of radiance cache.</p>
+          <div class="ablation-table-wrap">
+            <table class="ablation-table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Path</th>
+                  <th scope="col">Ours</th>
+                  <th scope="col">Direct</th>
+                  <th scope="col">Naive Cache</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Albedo</th>
+                  <td>0.38</td>
+                  <td class="best">0.35</td>
+                  <td>7.21</td>
+                  <td>4.97</td>
+                </tr>
+                <tr>
+                  <th scope="row">Roughness</th>
+                  <td>7.46</td>
+                  <td class="best">6.11</td>
+                  <td>304.8</td>
+                  <td>235.6</td>
+                </tr>
+                <tr>
+                  <th scope="row">Runtime</th>
+                  <td>3097</td>
+                  <td>821</td>
+                  <td class="best">453</td>
+                  <td>794</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="result-caption">
+            Qualitative and quantitative radiance-cache ablation on the kitchen scene using ground-truth mesh geometry. Albedo and roughness are reported as MSE x10<sup>3</sup>; runtime is reported in minutes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End qualitative results -->
+
+  <!-- Supplementary videos -->
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
-        <h2 class="title is-3">Additional Results</h2>
-        <div id="video-carousel" class="carousel results-carousel">
-          <div class="item item-video1">
-            <video id="video1" controls muted loop preload="metadata">
-              <source src="static/videos/carousel1.mp4" type="video/mp4">
-            </video>
+        <h2 class="title is-3">Supplementary Videos</h2>
+        <div class="video-scene-controls" role="tablist" aria-label="Supplementary video scene">
+          <button class="video-scene-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="video-scene-bedroom" data-video-scene-tab="bedroom">Bedroom</button>
+          <button class="video-scene-tab" type="button" role="tab" aria-selected="false" aria-controls="video-scene-kitchen" data-video-scene-tab="kitchen">Kitchen</button>
+          <button class="video-scene-tab" type="button" role="tab" aria-selected="false" aria-controls="video-scene-shelf" data-video-scene-tab="shelf">Shelf</button>
+        </div>
+        <div class="supplementary-video-panels">
+          <div class="supplementary-video-panel is-active" id="video-scene-bedroom" role="tabpanel" data-video-scene-panel="bedroom">
+            <div class="supplementary-video-grid">
+              <figure class="supplementary-video-primary">
+                <figcaption>Rerendering</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/rerendering/bedroom.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Albedo</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/albedo/bedroom.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Roughness</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/roughness/bedroom.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Normal</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/normal/bedroom.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
           </div>
-          <div class="item item-video2">
-            <video id="video2" controls muted loop preload="metadata">
-              <source src="static/videos/carousel2.mp4" type="video/mp4">
-            </video>
+          <div class="supplementary-video-panel" id="video-scene-kitchen" role="tabpanel" data-video-scene-panel="kitchen" hidden>
+            <div class="supplementary-video-grid">
+              <figure class="supplementary-video-primary">
+                <figcaption>Rerendering</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/rerendering/kitchen.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Albedo</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/albedo/kitchen.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Roughness</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/roughness/kitchen.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Normal</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/normal/kitchen.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
           </div>
-          <div class="item item-video3">
-            <video id="video3" controls muted loop preload="metadata">
-              <source src="static/videos/carousel3.mp4" type="video/mp4">
-            </video>
+          <div class="supplementary-video-panel" id="video-scene-shelf" role="tabpanel" data-video-scene-panel="shelf" hidden>
+            <div class="supplementary-video-grid">
+              <figure class="supplementary-video-primary">
+                <figcaption>Rerendering</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/rerendering/shelf.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Albedo</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/albedo/shelf.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Roughness</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/roughness/shelf.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure>
+                <figcaption>Normal</figcaption>
+                <video controls muted loop playsinline preload="metadata">
+                  <source src="static/videos/supplementary/normal/shelf.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End video carousel -->
+  <!-- End supplementary videos -->
 
   <!-- Paper poster -->
   <section class="hero is-small is-light">

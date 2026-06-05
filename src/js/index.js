@@ -90,9 +90,9 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Video carousel autoplay when in view
-function setupVideoCarouselAutoplay() {
-    const carouselVideos = document.querySelectorAll('.results-carousel video');
+// Supplementary video autoplay when in view
+function setupSupplementaryVideoAutoplay() {
+    const carouselVideos = document.querySelectorAll('.supplementary-video-grid video');
     
     if (carouselVideos.length === 0) return;
     
@@ -119,6 +119,126 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+function setupSupplementaryVideoTabs() {
+    const tabs = document.querySelectorAll('[data-video-scene-tab]');
+    const panels = document.querySelectorAll('[data-video-scene-panel]');
+
+    if (!tabs.length || !panels.length) {
+        return;
+    }
+
+    const setScene = scene => {
+        tabs.forEach(tab => {
+            const isActive = tab.dataset.videoSceneTab === scene;
+            tab.classList.toggle('is-active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        panels.forEach(panel => {
+            const isActive = panel.dataset.videoScenePanel === scene;
+            panel.classList.toggle('is-active', isActive);
+            panel.hidden = !isActive;
+
+            if (!isActive) {
+                panel.querySelectorAll('video').forEach(video => {
+                    video.pause();
+                });
+            }
+        });
+    };
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            setScene(tab.dataset.videoSceneTab);
+        });
+    });
+
+    setScene('bedroom');
+}
+
+function setupResultTabs() {
+    const categoryTabs = document.querySelectorAll('[data-result-category-tab]');
+    const categoryPanels = document.querySelectorAll('[data-result-category-panel]');
+    const metricTabs = document.querySelectorAll('[data-result-metric-tab]');
+    const metricPanels = document.querySelectorAll('[data-result-metric-panel]');
+    const metricControls = document.querySelector('.result-metric-controls');
+    const descriptions = document.querySelectorAll('[data-result-description]');
+
+    if (!categoryTabs.length || !categoryPanels.length) {
+        return;
+    }
+
+    let activeCategory = 'synthetic';
+    let activeMetric = 'albedo';
+
+    const setMetric = metric => {
+        activeMetric = metric;
+
+        metricTabs.forEach(tab => {
+            const isActive = tab.dataset.resultMetricTab === activeMetric;
+            tab.classList.toggle('is-active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            tab.setAttribute('aria-controls', `${activeCategory}-${tab.dataset.resultMetricTab}`);
+        });
+
+        metricPanels.forEach(panel => {
+            const isActive = panel.dataset.resultMetricPanel === `${activeCategory}:${activeMetric}`;
+            panel.classList.toggle('is-active', isActive);
+            panel.hidden = !isActive;
+        });
+    };
+
+    const setCategory = category => {
+        activeCategory = category;
+
+        categoryTabs.forEach(tab => {
+            const isActive = tab.dataset.resultCategoryTab === activeCategory;
+            tab.classList.toggle('is-active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        categoryPanels.forEach(panel => {
+            const isActive = panel.dataset.resultCategoryPanel === activeCategory;
+            panel.classList.toggle('is-active', isActive);
+            panel.hidden = !isActive;
+        });
+
+        descriptions.forEach(description => {
+            const isActive = description.dataset.resultDescription === activeCategory;
+            description.classList.toggle('is-active', isActive);
+            description.hidden = !isActive;
+        });
+
+        if (metricControls) {
+            metricControls.hidden = activeCategory === 'ablation';
+        }
+
+        if (activeCategory === 'ablation') {
+            metricPanels.forEach(panel => {
+                panel.classList.remove('is-active');
+                panel.hidden = true;
+            });
+            return;
+        }
+
+        setMetric(activeMetric);
+    };
+
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            setCategory(tab.dataset.resultCategoryTab);
+        });
+    });
+
+    metricTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            setMetric(tab.dataset.resultMetricTab);
+        });
+    });
+
+    setCategory(activeCategory);
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
@@ -131,12 +251,16 @@ $(document).ready(function() {
 		autoplaySpeed: 5000,
     }
 
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+	// Initialize carousel sections when present.
+    if (document.querySelector('.carousel')) {
+        var carousels = bulmaCarousel.attach('.carousel', options);
+    }
 	
     bulmaSlider.attach();
     
-    // Setup video autoplay for carousel
-    setupVideoCarouselAutoplay();
+    // Setup video autoplay and scene switching
+    setupSupplementaryVideoAutoplay();
+    setupSupplementaryVideoTabs();
+    setupResultTabs();
 
 })
