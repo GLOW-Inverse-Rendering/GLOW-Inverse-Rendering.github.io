@@ -222,7 +222,7 @@
   <!-- Paper abstract -->
   <section class="section hero is-light">
     <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
@@ -253,7 +253,7 @@
   <section class="hero is-small qualitative-section">
     <div class="hero-body">
       <div class="container is-max-widescreen">
-        <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+        <h2 class="title is-3">Experimental Results</h2>
         <div class="result-controls result-primary-controls" role="tablist" aria-label="Result category">
           <button class="result-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="results-synthetic" data-result-category-tab="synthetic">Synthetic Comparison</button>
           <button class="result-tab" type="button" role="tab" aria-selected="false" aria-controls="results-real" data-result-category-tab="real">Real-Scene Comparison</button>
@@ -277,7 +277,6 @@
 
         <div class="result-category-panel is-active" id="results-synthetic" role="tabpanel" data-result-category-panel="synthetic">
           <div class="result-panel is-active" id="synthetic-albedo" role="tabpanel" data-result-metric-panel="synthetic:albedo">
-            <h3 class="result-subtitle">Synthetic Scenes</h3>
             <article class="result-scene">
               <h3>Bedroom</h3>
               <div class="result-grid">
@@ -326,7 +325,6 @@
           </div>
 
           <div class="result-panel" id="synthetic-roughness" role="tabpanel" data-result-metric-panel="synthetic:roughness" hidden>
-            <h3 class="result-subtitle">Synthetic Scenes</h3>
             <article class="result-scene">
               <h3>Bedroom</h3>
               <div class="result-grid">
@@ -377,7 +375,6 @@
 
         <div class="result-category-panel" id="results-real" role="tabpanel" data-result-category-panel="real" hidden>
           <div class="result-panel is-active" id="real-albedo" role="tabpanel" data-result-metric-panel="real:albedo">
-            <h3 class="result-subtitle">Real Scenes</h3>
             <article class="result-scene">
               <h3>Shoe Rack</h3>
               <div class="result-grid result-grid-real">
@@ -421,7 +418,6 @@
           </div>
 
           <div class="result-panel" id="real-roughness" role="tabpanel" data-result-metric-panel="real:roughness" hidden>
-            <h3 class="result-subtitle">Real Scenes</h3>
             <article class="result-scene">
               <h3>Shoe Rack</h3>
               <div class="result-grid result-grid-real">
@@ -466,7 +462,6 @@
         </div>
 
         <div class="result-category-panel" id="results-ablation" role="tabpanel" data-result-category-panel="ablation" hidden>
-          <h3 class="result-subtitle">Radiance Cache Ablation</h3>
           <div class="ablation-grid">
             <div class="ablation-corner" aria-hidden="true"></div>
             <div class="ablation-header">GT</div>
@@ -645,7 +640,7 @@
   <section class="hero is-small is-light">
     <div class="hero-body">
       <div class="container">
-        <h2 class="title">Poster</h2>
+        <h2 class="title is-3">Poster</h2>
         <iframe class="poster-frame" src="static/pdfs/poster_CVPR_2026.pdf" title="GLOW CVPRF 2026 poster PDF"></iframe>
       </div>
     </div>
@@ -656,7 +651,7 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
+        <h2 class="title is-3">BibTeX</h2>
         <button class="copy-bibtex-btn" type="button" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
           <i class="fas fa-copy"></i>
           <span class="copy-text">Copy</span>

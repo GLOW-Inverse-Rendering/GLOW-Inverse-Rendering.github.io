@@ -384,14 +384,6 @@ body {
   display: block;
 }
 
-.result-subtitle {
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  font-size: 1.55rem;
-  font-weight: 800;
-  margin: 2rem 0 1.25rem;
-}
-
 .result-scene {
   margin-bottom: 2rem;
 }
@@ -688,12 +680,17 @@ body {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 60px;
   height: 3px;
   background: var(--gradient-accent);
   border-radius: 2px;
+}
+
+.title.is-3.has-text-centered::after,
+.has-text-centered .title.is-3::after {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Content Improvements */
@@ -731,18 +728,20 @@ body {
 }
 
 /* BibTeX Styling */
-pre {
-  background: var(--background-accent) !important;
+#bibtex-code {
+  background: var(--background-secondary) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: var(--border-radius) !important;
-  padding: 1.5rem !important;
-  font-size: 0.9rem !important;
-  overflow-x: auto;
   box-shadow: var(--shadow-sm);
+  font-size: 0.9rem !important;
+  line-height: 1.65;
+  margin-top: 0;
+  overflow-x: auto;
+  padding: 1.5rem !important;
 }
 
-code {
-  background: var(--background-accent) !important;
+#bibtex-code code {
+  background: transparent !important;
   color: var(--text-primary) !important;
   font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
 }
@@ -750,9 +749,10 @@ code {
 /* BibTeX Section Improvements */
 .bibtex-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
 }
 
 .copy-bibtex-btn {
@@ -1063,10 +1063,6 @@ code {
     font-size: 0.76rem;
     overflow-wrap: normal;
     white-space: nowrap;
-  }
-
-  .result-subtitle {
-    font-size: 1.35rem;
   }
 
   .result-scene h3 {
