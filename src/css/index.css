@@ -602,9 +602,6 @@ body {
   .result-grid:not(.result-grid-real) .result-group-colocated {
     grid-column: 1 / 6;
     grid-row: 3;
-    justify-self: start;
-    max-width: calc(100vw - 3rem);
-    width: 100%;
   }
 
   .result-grid:not(.result-grid-real) figure:nth-of-type(1) {
