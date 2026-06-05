@@ -28,6 +28,10 @@ html {
   scroll-behavior: smooth;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
